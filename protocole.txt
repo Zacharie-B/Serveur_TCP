@@ -1,5 +1,5 @@
 Code à utiliser pour le protocole TCP de mon serveur écrit en héxadécimale :
-0007 : envoi d'un produit
-
-
-
+0007 : insertion d'un produit
+0008 : voir la liste des produits
+0009 : voir le nombre de produits
+000A : voir le nombre d'entrepôt de la société

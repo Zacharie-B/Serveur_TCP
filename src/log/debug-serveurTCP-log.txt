@@ -62,3 +62,25 @@ INFO ThreadRepeteur serveur_reseau.ServeurTCP - Le client d'adresse IP 127.0.0.1
 
 INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
 INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 53106
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40368
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Le message '[Client] : J'envoi le produit {date_restockage=sdf, categorie=Ordinateur, marqueO=zer, nom_produit=zeazeaze, filaire=false, date_fabrication=zers, gerer_appel=false, type_produit=erzer, bluetooth=false, memoire=zee, taille_ecran=zr, cout_produit=azeaze, processeur=zer, stock=zeeaze, vitesse_processeur=zerz}' est incorrect, veuillez nous transmettre un message qui suit le protocole applicatif.
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40372
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Le message '[Client] : J'envoi le produit {type_peripherique=zer, marquePB=zer, gerer_appel=false, type_produit=zrzer, date_restockage=zer, categorie=Périphérique Basique, bluetooth=false, cout_produit=aze, nom_produit=zezeaz, stock=zer, filaire=false, date_fabrication=zer}' est incorrect, veuillez nous transmettre un message qui suit le protocole applicatif.
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40374
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40380
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Le message 'ouvrir GUI' est incorrect, veuillez nous transmettre un message qui suit le protocole applicatif.
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Le message '[Client] J'envoi le produit {date_restockage=2022-01-25, categorie=Ordinateur, marqueO=HP, nom_produit=PC_Fac, filaire=false, date_fabrication=2021-12-25, gerer_appel=false, type_produit=Ordinateur fixe, bluetooth=false, memoire=16, taille_ecran=18.9, cout_produit=800, processeur=Intel core i5 10ème génération, stock=20, vitesse_processeur=3.10}' est incorrect, veuillez nous transmettre un message qui suit le protocole applicatif.
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40384
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40386

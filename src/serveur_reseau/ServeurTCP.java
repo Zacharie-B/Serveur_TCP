@@ -34,16 +34,17 @@ public class ServeurTCP {
 	        boolean listening = true;
 	        boolean error = false;
 	        
-	        logger.info("Bienvenue dans une session de ce serveur TCP :");
 	        try {
-	        	serverSocket = new ServerSocket (Integer.valueOf(argv[1]), 0, InetAddress.getByName(argv[0])) ;
+	        	serverSocket = new ServerSocket (Integer.valueOf(argv[1]), 0, InetAddress.getByName(argv[0]));
+	        	logger.info("Bienvenue dans une session de ce serveur TCP :");
 	        }
 	        catch (IOException e) {
-	        	String text_error = "Je ne peux pas ouvrir de socket à l'adresse "+ argv[0] +" avec le port " + argv[1] + ", il est déjà utilisé.";
+	        	String text_error = "[Serveur] Je ne peux pas ouvrir de socket à "
+	        			+ "l'adresse "+ argv[0] +" avec le port " + argv[1] + ", il est déjà utilisé.";
 	            System.err.println (text_error);
 	            System.exit (-1) ;
 	        }catch (ArrayIndexOutOfBoundsException e) {
-	        	String text_error ="Il n'y a pas de valeur pour le paramètre de la fonction 'main'."
+	        	String text_error ="[Serveur] Il n'y a pas de valeur pour le paramètre de la fonction 'main'."
 	        			+ "\n	Veuilez écrire la valeur du port dans le 'run configurations'->'arguments'.";
 	        	System.err.println(text_error);
 	        }
@@ -55,19 +56,20 @@ public class ServeurTCP {
 		        while (listening) {
 		        	if(!error) {
 		        		try {
-			        		new ThreadRepet (serverSocket.accept ()).start () ;
+			        		new ThreadRepet (serverSocket.accept()).start() ;
 		        			}catch(NullPointerException e) {
-			    	        	String text_error = "Tant que vous ne le faîtes pas, le serveur ne pourra pas se lancer.";
+			    	        	String text_error = "[Serveur] Tant que vous ne le faîtes pas,"
+			    	        			+ " le serveur ne pourra pas vous donner d'accès.";
 			            		System.err.println(text_error);
 			            		error = true;
 		        			}
 		        	}
 		        }
 	        }catch(IOException e){
-	        	String text_error = "le serveur a soudainement planté pour une raison inconnu";
+	        	String text_error = "[Serveur] a soudainement planté pour une raison inconnu";
 	        	logger.info(text_error);
 	        }
-	        serverSocket.close () ;
+	        serverSocket.close();
     }
 }
 
@@ -88,7 +90,8 @@ class ThreadRepet extends Thread {
         ServeurTCP.logger.info("Il utilise le port numéro "+port_number);  
     }
 
-	    public void run () {
+	    @SuppressWarnings("unlikely-arg-type")
+		public void run () {
 	        try {
 	            PrintWriter flux_sortie = new PrintWriter 
 	                                      (clientSocket.getOutputStream (), true) ;
@@ -100,21 +103,14 @@ class ThreadRepet extends Thread {
 	             * Boucle permmetant de lancer le protocole applicatif côté serveur.
 	             */
 	            while  ((chaine_entree = flux_entree.readLine()) != null) {
-	            	System.out.println("Message du client : " + chaine_entree);
+	            	System.out.println("[Client] Message du client : " + chaine_entree);
 	                 /*
 	                  * Vérifie si la chaine en entrée possède plus de 18 caractères.
 	                  */
-	                 if(chaine_entree.indexOf("{")>18) {
-	                	 debut_chaine = chaine_entree.substring(0,chaine_entree.indexOf("{"));
-	                	 /*
-	                	  * Si le début de la chaine est "J'envoi le produit" alors 
-	                	  * ce sont les données à écrire dans la base de données
-	                	  */
-	                	 if (debut_chaine.equals("J'envoi le produit ")) {
-		                	 protocoleServeur.DataProduct(flux_sortie, chaine_entree,
-		                			 debut_chaine, convert);
-		                	 continue;
-		            	 }
+	                 if(Integer.valueOf(chaine_entree.substring(0, 4)).equals(0x1007)) {
+	                	 protocoleServeur.DataProduct(flux_sortie, chaine_entree,
+	                			 debut_chaine, convert);
+	                	 continue;
 	                 }
 	                 if(chaine_entree.indexOf("°")>8) {
 		                 debut = chaine_entree.substring(0, 10);
@@ -126,26 +122,17 @@ class ThreadRepet extends Thread {
 	                  * Si l'utilisateur a écrit "Salut" alors le serveur ferme la connexion avec le client
 	                  */
 	                 else if (chaine_entree.equals ("Salut")) {
-	                    chaine_sortie = "Au revoir !" ;
-	                    flux_sortie.println (chaine_sortie) ;
-	                    break ;
+	                    chaine_sortie = "Au revoir !";
+	                    flux_sortie.println (chaine_sortie);
+	                    break;
 	                 }
-	                 /*
-	                  * Sinon si le serveur a écrit "commencer la communication"
-	                  */
-	                 else if(chaine_entree.equals("commencer la communication")) {
-	                	 protocoleServeur.BeginningDialog(flux_sortie,chaine_sortie);
-	                 }
-	                 
 	                 else if(chaine_entree.equals("vous me recevez ?")) {
 	                	 protocoleServeur.ResponseIsSoLong(flux_sortie);
 	                 }
-	                 
 	                 else if(chaine_entree.equals("test client")) {
 	                	 this.clientSocket.setSoTimeout(5000);
 	                	 protocoleServeur.ResponseTestClient(flux_sortie,flux_entree);
 	                 }
-	                 
 	                 
 	                 /*
 	                  * Sinon le serveur répète le message envoyé par le client
@@ -158,7 +145,7 @@ class ThreadRepet extends Thread {
 	            flux_sortie.close () ;
 	            flux_entree.close () ;
 	            clientSocket.close () ;
-	            System.out.println("Le client d'adresse IP "+ip_client+ " utilisant le port "+port_number+" s'est déconnecté correctement");
+	            System.out.println(" [Serveur] Le client d'adresse IP "+ip_client+ " utilisant le port "+port_number+" s'est déconnecté correctement");
 	        }
 	        /**
 	         * Exception qui gère une deconnexion brutale du client.
@@ -168,18 +155,18 @@ class ThreadRepet extends Thread {
 				System.err.println(text_error);
 				ServeurTCP.logger.info(text_error +"\n");
 			} catch (SQLException e) {
-				System.out.println("Il y a eu un problème lors de la requête SQL");
+				System.out.println(" [Serveur] Il y a eu un problème lors de la requête SQL");
 			}
 	        catch (IOException e) {
-	        	String socket_time_out = "Il y a eu un problème de flux :"
+	        	String socket_time_out = " Il y a eu un problème de flux :"
 	        			+ "\nLe client a mis trop de temps pour répondre, le serveur a donc fermer sa connexion";
-	        	System.out.println(socket_time_out);
+	        	System.out.println("[Serveur]" + socket_time_out);
 	        	ServeurTCP.logger.info(socket_time_out);
 
 	        } catch (InterruptedException e) {
 				// TODO Auto-generated catch block
-				System.out.println("Il y a eu un problème lorsqu'on a endormi le système");
+				System.out.println("[Serveur] Il y a eu un problème lorsqu'on a endormi le système");
 			}
-	        System.out.println("Le client d'adresse IP "+ip_client+ " utilisant le port "+port_number+" est bien déconnecté");
+	        System.out.println("[Serveur] Le client d'adresse IP "+ip_client+ " utilisant le port "+port_number+" s'est bien déconnecté");
 	    }
 	}

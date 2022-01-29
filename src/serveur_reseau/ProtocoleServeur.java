@@ -22,17 +22,6 @@ public class ProtocoleServeur {
 	}
 	
 	/**
-	 * envoi le message de confirmation de connexion au client TCP
-	 * @param flux_sortie
-	 * @param chaine_sortie
-	 */
-	public void BeginningDialog(PrintWriter flux_sortie, String chaine_sortie) {
-		chaine_sortie = "communication établie" ;
-        System.out.println ("Serveur> " + chaine_sortie) ;
-        flux_sortie.println (chaine_sortie) ;
-	}
-	
-	/**
 	 * récupère la hashmap contenant les caractéristiques d'un produit envoyé par le client
 	 * et rentre ces caractéristiques dans la base de données
 	 * @param flux_sortie
