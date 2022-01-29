@@ -21,7 +21,13 @@ public class ConvertStringToHashmap extends ExtractDataHashMap {
             String empdata[] = part.split("=");
             
             String strId = empdata[0].trim();
-            String strValue = empdata[1].trim();
+            String strValue = null;
+            try {
+            	strValue = empdata[1].trim();
+            } catch(ArrayIndexOutOfBoundsException aiobe) {
+            	System.err.println("Aucune donnée présente sur le produit à stocker");
+            }
+            
             
             //add to map
             ServeurTCP.products.put(strId, strValue);
