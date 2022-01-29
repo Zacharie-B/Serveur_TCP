@@ -4,7 +4,6 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
-import java.net.SocketTimeoutException;
 import java.util.HashMap;
 
 import org.apache.log4j.Logger;
@@ -27,9 +26,10 @@ public class ServeurTCP {
 	public static HashMap<String, String> products = new HashMap<String, String>();
 	public static Logger logger = LoggerUtility.getLogger(ServeurTCP.class, "text");
 
+	private static ServerSocket serverSocket = null;
+
 	public static void main(String argv[]) throws IOException {
 
-		ServerSocket serverSocket = null;
 		boolean listening = true;
 		boolean error = false;
 		int portNumber = 5000;
@@ -43,7 +43,7 @@ public class ServeurTCP {
 			String text_error = "[Serveur] Je ne peux pas ouvrir de socket à " + "l'adresse "
 					+ argv[0] + " avec le port " + portNumber + ", il est déjà utilisé.";
 			System.err.println(text_error);
-			openServerSocket(serverSocket, InetAddress.getByName(argv[0]), portNumber);
+			openServerSocket(InetAddress.getByName(argv[0]), portNumber);
 		} catch (ArrayIndexOutOfBoundsException e) {
 			String text_error = "[Serveur] Il n'y a pas de valeur pour le paramètre de la fonction 'main'."
 					+ "\n	Veuilez écrire la valeur du port dans le 'run configurations'->'arguments'.";
@@ -81,8 +81,7 @@ public class ServeurTCP {
 	 * @param portNumber
 	 * @throws IOException
 	 */
-	private static void openServerSocket(ServerSocket serverSocket, InetAddress ip, int portNumber)
-			throws IOException {
+	private static void openServerSocket(InetAddress ip, int portNumber) throws IOException {
 		for (portNumber += 1; portNumber < 65535; portNumber++) {
 			try {
 				ServerSocket socket = new ServerSocket(portNumber);
@@ -92,8 +91,10 @@ public class ServeurTCP {
 
 			}
 		}
+		System.out.println(portNumber);
 		serverSocket = new ServerSocket(portNumber, 0, ip);
 	}
+}
 
 class ThreadRepet extends Thread {
 	private Socket clientSocket = null;
@@ -111,8 +112,11 @@ class ThreadRepet extends Thread {
 		ServeurTCP.logger.info("Il utilise le port numéro " + port_number);
 	}
 
+	@SuppressWarnings("unlikely-arg-type")
 	public void run() {
 		try {
+			// On laisse une minute au client pour nous parler
+			clientSocket.setSoTimeout(60000);
 			PrintWriter flux_sortie = new PrintWriter(clientSocket.getOutputStream(), true);
 			BufferedReader flux_entree = new BufferedReader(
 					new InputStreamReader(clientSocket.getInputStream()));
@@ -126,8 +130,10 @@ class ThreadRepet extends Thread {
 				/*
 				 * Vérifie si la chaine en entrée possède plus de 18 caractères.
 				 */
+				int indexEndAsking = chaine_entree.indexOf(" ");
 				try {
-					if (Integer.valueOf(chaine_entree.substring(0, 4)).equals(0x1007)) {
+					
+					if (Integer.valueOf(chaine_entree.substring(0, indexEndAsking)).equals(0x1007)) {
 						System.out.println("Dans la bonne chaine");
 						protocoleServeur.DataProduct(flux_sortie, chaine_entree, convert);
 					}
@@ -135,26 +141,20 @@ class ThreadRepet extends Thread {
 					protocoleServeur.RejectMessage(flux_sortie, chaine_entree, clientSocket);
 					continue;
 				}
-				if (chaine_entree.indexOf("°") > 8) {
-					debut = chaine_entree.substring(0, 10);
-					if (debut.equals("message n°")) {
-						protocoleServeur.MessageInSomeDatagram(flux_sortie, flux_entree,
-								chaine_entree);
-					}
+				if (Integer.valueOf(chaine_entree.substring(0, indexEndAsking)).equals(0x3001)) {
+					System.out.println("Dans la bonne chaine 2");
+					protocoleServeur.BufferOverflow(flux_sortie, flux_entree, chaine_entree);
 				}
 				/*
 				 * Si l'utilisateur a écrit "Salut" alors le serveur ferme la connexion avec le
 				 * client
 				 */
-				else if (chaine_entree.equals("Salut")) {
+				else if (Integer.valueOf(chaine_entree.substring(0, indexEndAsking)).equals(0xF000)) {
 					chaine_sortie = "Au revoir !";
 					flux_sortie.println(chaine_sortie);
 					break;
 				} else if (chaine_entree.equals("vous me recevez ?")) {
 					protocoleServeur.ResponseIsSoLong(flux_sortie);
-				} else if (chaine_entree.equals("test client")) {
-					this.clientSocket.setSoTimeout(5000);
-					protocoleServeur.ResponseTestClient(flux_sortie, flux_entree);
 				}
 
 				/*
@@ -181,12 +181,12 @@ class ThreadRepet extends Thread {
 			ServeurTCP.logger.info(text_error + "\n");
 		} catch (IOException e) {
 			String socket_time_out = " Il y a eu un problème de flux :"
-					+ "\nLe client a mis trop de temps pour répondre, le serveur a donc fermer sa connexion";
+					+ "\nSoit il y a un problème de connexion avec la socket"
+					+ "\nSoit le client a mis trop de temps pour répondre ou envoyé des requêtes";
 			System.err.println("[Serveur]" + socket_time_out);
 			ServeurTCP.logger.info(socket_time_out);
-
+			System.err.println(
+					"[Serveur] le client " + ip_client + ":" + port_number + "est déconnecté");
 		}
-		System.out.println("[Serveur] Le client d'adresse IP " + ip_client + " utilisant le port "
-				+ port_number + " s'est bien déconnecté");
 	}
 }

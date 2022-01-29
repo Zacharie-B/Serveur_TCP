@@ -1,5 +1,8 @@
 Code à utiliser pour le protocole TCP de mon serveur écrit en héxadécimale :
-1007 : insertion d'un produit
-1008 : voir la liste des produits
-1009 : voir le nombre de clients
-100A : voir le nombre d'entrepôt de la société
+4103 (0x1007) : insertion d'un produit
+8200 (0x2008) : voir la liste des produits
+8201 (0x2009) : voir le nombre de clients
+8202 (0x200A) : voir le nombre d'entrepôt de la société
+12288 (0x3000) : lance le test de latence du serveur
+12289 (0x3001) : fait un dépassement de buffer en envoyant un paquet de 100 000 octets
+61440 (0xF000) : quitter l'application

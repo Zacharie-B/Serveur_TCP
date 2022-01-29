@@ -51,7 +51,7 @@ public class ProtocoleServeur {
 	 * @param chaine_entree
 	 */
 	public void RejectMessage(PrintWriter flux_sortie, String chaine_entree, Socket clientSocket) {
-		String chaine_sortie = "Le message '" + chaine_entree + "' est incorrect,"
+		String chaine_sortie = "[Serveur] Le message '" + chaine_entree + "' est incorrect,"
 				+ " veuillez nous transmettre un message qui suit le protocole applicatif.";
 		System.out.println(chaine_sortie);
 		ServeurTCP.logger.info("Message incohérent de "
@@ -59,45 +59,9 @@ public class ProtocoleServeur {
 		flux_sortie.println(chaine_sortie);
 	}
 
-	/**
-	 * répond au client TCP avec une grande lenteur
-	 * 
-	 * @param flux_sortie
-	 * @param chaine_entree
-	 * @throws InterruptedException
-	 */
-	public void ResponseIsSoLong(PrintWriter flux_sortie) {
-		try {
-			Thread.sleep(11000);
-			String chaine_sortie = "oui 5 sur 5";
-			System.out.println(chaine_sortie);
-			flux_sortie.println(chaine_sortie);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			System.err.println("[Serveur] Il y a eu un problème lorsqu'on a endormi le système");
-		}
+	public void ResponseIsSoLong(PrintWriter flux_sortie){
+		
 	}
-
-	/**
-	 * test la lenteur du client pour répondre
-	 * 
-	 * @param flux_sortie
-	 * @param chaine_entree
-	 * @throws InterruptedException
-	 * @throws IOException
-	 */
-	public void ResponseTestClient(PrintWriter flux_sortie, BufferedReader flux_entree) {
-		try {
-			String chaine_sortie = "test 1 réussi";
-			flux_sortie.println(chaine_sortie);
-			String chaine_entree = flux_entree.readLine();
-			flux_sortie.println(chaine_entree);
-			System.out.println(chaine_entree);
-		} catch (IOException ioe) {
-			System.err.println("[Serveur] On ne peut pas lire le message du client !");
-		}
-	}
-
 	/**
 	 * reçoit le message d'un client en plusieurs datagrammes
 	 * 
@@ -106,20 +70,13 @@ public class ProtocoleServeur {
 	 * @param chaine_entree
 	 * @throws IOException
 	 */
-	public void MessageInSomeDatagram(PrintWriter flux_sortie, BufferedReader flux_entree,
+	public void BufferOverflow(PrintWriter flux_sortie, BufferedReader flux_entree,
 			String chaine_entree) {
-		try {
-			// TODO Auto-generated method stub
-			flux_sortie.println(chaine_entree);
-			System.out.println(chaine_entree);
-			chaine_entree = flux_entree.readLine();
-			flux_sortie.println(chaine_entree);
-			System.out.println(chaine_entree);
-			chaine_entree = flux_entree.readLine();
-			flux_sortie.println(chaine_entree);
-			System.out.println(chaine_entree);
-		} catch (IOException ioe) {
-			System.err.println("[Serveur] On ne peut pas lire le message du client !");
+		try{
+			flux_entree.read(chaine_entree.toCharArray(), 20, 50);
+			System.out.println("[Serveur] Ce paquet trop long est réjeté");
+		} catch(IOException ioe) {
+			System.err.println("[Serveur] Problème de lecture du paquet de 100 000 octets");
 		}
 	}
 }

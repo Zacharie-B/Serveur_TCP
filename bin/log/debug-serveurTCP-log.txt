@@ -110,3 +110,24 @@ INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adres
 INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40402
 INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de /127.0.0.1:40402
 INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de /127.0.0.1:40402
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40404
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40404
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40404
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40408
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40410
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40410
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40414
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40414
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40418
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40418
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
