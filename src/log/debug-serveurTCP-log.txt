@@ -131,3 +131,117 @@ INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adres
 INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40418
 INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40418
 INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40420
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40422
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 34946
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40424
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 34948
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40426
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40428
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40430
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40432
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40438
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40438
+INFO ThreadRepeteur serveur_reseau.ServeurTCP -  Il y a eu un problème de flux :
+Soit il y a un problème de connexion avec la socket
+Soit le client a mis trop de temps pour répondre ou envoyé des requêtes
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40440
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40440
+INFO ThreadRepeteur serveur_reseau.ServeurTCP -  Il y a eu un problème de flux :
+Soit il y a un problème de connexion avec la socket
+Soit le client a mis trop de temps pour répondre ou envoyé des requêtes
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40442
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40444
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40444
+INFO ThreadRepeteur serveur_reseau.ServeurTCP -  Il y a eu un problème de flux :
+Soit il y a un problème de connexion avec la socket
+Soit le client a mis trop de temps pour répondre ou envoyé des requêtes
+INFO ThreadRepeteur serveur_reseau.ServeurTCP -  Il y a eu un problème de flux :
+Soit il y a un problème de connexion avec la socket
+Soit le client a mis trop de temps pour répondre ou envoyé des requêtes
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40446
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40448
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40450
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40452
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40452
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40452
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40452
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40454
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40454
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40454
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40456
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40456
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40456
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40458
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40458
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40460
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40462
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40462
+INFO ThreadRepeteur serveur_reseau.ServeurTCP -  Il y a eu un problème de flux :
+Soit il y a un problème de connexion avec la socket
+Soit le client a mis trop de temps pour répondre ou envoyé des requêtes
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40464
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40464
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40466
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40470
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40470
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40472
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40472
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40474
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40474
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40476
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40476
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40478
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:40478
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 40480
