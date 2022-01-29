@@ -47,7 +47,7 @@ public class ProtocoleServeur {
 		int endIndex = chaine_entree.indexOf("{");
    	 	debut_chaine = chaine_entree.substring(0,endIndex);
 		convert.ConvertStringToHashMap(chaine_entree);
-		RemplirBD put_in_db = new RemplirBD(ImportantVariable.HOST_BD_ALWAYS,ImportantVariable.BD_NAME_BD_ALWAYS,
+		RemplirBD put_in_db = new RemplirBD(ImportantVariable.HOST_BD_ALWAYS,ImportantVariable.NAME_BD_ALWAYS,
 				ImportantVariable.USER_BD_ALWAYS,ImportantVariable.PASSWORD_BD_ALWAYS);
 		String chaine = put_in_db.InsertInBD();
         flux_sortie.println (chaine) ;

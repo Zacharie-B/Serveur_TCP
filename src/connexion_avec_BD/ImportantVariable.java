@@ -2,7 +2,7 @@ package connexion_avec_BD;
 
 public class ImportantVariable {
 	
-	public static final String FileJSON ="C:\\Users\\HP\\Documents\\Cours L3I 2020-2021\\cours_DWA\\projet\\aeroports.json";
+//	public static final String FileJSON ="C:\\Users\\HP\\Documents\\Cours L3I 2020-2021\\cours_DWA\\projet\\aeroports.json";
 	
 	/**
 	 * connexion à la BD de la fac si on y retourne un jour
@@ -30,12 +30,12 @@ public class ImportantVariable {
 	/**
 	 * connexion à la BD postgres de thibaut
 	 */
-	public static final String HOST_BD_ALWAYS ="postgresql-thibautbal.alwaysdata.net/";
+	public static final String HOST_BD_ALWAYS ="postgresql-zacharie-baril.alwaysdata.net/";
 	
-	public static final String USER_BD_ALWAYS ="thibautbal_equipe_projet";
+	public static final String USER_BD_ALWAYS ="zacharie-baril";
 	
-	public static final String BD_NAME_BD_ALWAYS ="thibautbal_projet_bd-reseau";
+	public static final String NAME_BD_ALWAYS ="zacharie-baril_serveur-tcp";
 	
-	public static final String PASSWORD_BD_ALWAYS ="PaulThibautZacharie";
+	public static final String PASSWORD_BD_ALWAYS ="M3r&c1eL";
 	
 }

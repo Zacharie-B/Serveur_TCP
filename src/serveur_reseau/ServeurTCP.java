@@ -40,7 +40,7 @@ public class ServeurTCP {
 	        }
 	        catch (IOException e) {
 	        	String text_error = "Je ne peux pas ouvrir de socket à l'adresse "+ argv[0] +" avec le port " + argv[1] + ", il est déjà utilisé.";
-	            System.err.println (text_error) ;
+	            System.err.println (text_error);
 	            System.exit (-1) ;
 	        }catch (ArrayIndexOutOfBoundsException e) {
 	        	String text_error ="Il n'y a pas de valeur pour le paramètre de la fonction 'main'."
