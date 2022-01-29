@@ -1,2 +1,2 @@
 # Serveur_TCP
-Server which give a service at a client which want the data on the ProgreSQL database.
+Server who gives a service to a client,this receiving a service from the server and getting data from the database "ProgreSQL".
