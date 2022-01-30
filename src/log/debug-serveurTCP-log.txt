@@ -454,3 +454,38 @@ INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adres
 INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 57258
 INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
 INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 57260
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 57262
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 57264
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 57266
+INFO ThreadRepeteur serveur_reseau.ServeurTCP - Message incohérent de 127.0.0.1:57266
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 57268
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 57270
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 57272
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 57274
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 57276
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 57278
+INFO ThreadRepeteur serveur_reseau.ServeurTCP -  Il y a eu un problème de flux :
+Le client 127.0.0.1 a mis trop de temps pour répondre ou envoyé des requêtes
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Bienvenue dans une session de ce serveur TCP :
+INFO main serveur_reseau.ServeurTCP - Un nouveau client est connecté à l'adresse IP 127.0.0.1
+INFO main serveur_reseau.ServeurTCP - Il utilise le port numéro 57280

@@ -49,15 +49,22 @@ public class RemplirBD {
 	 */
 	public String InsertInBD() {
 		try {
-			ArrayList<String> product = new ArrayList<String>(8);
+			ArrayList<String> product;
 			product = edhm.ExtractHashMapToArrayListProduct();
+			System.out.println(product.toString());
+			
 			int actually_stock = Integer.valueOf(product.get(7)) + AllStock();
+			
 			if (CapacityMax() > actually_stock) {
+				System.out.println("On a la place pour insérer le produit");
 				InsertProduct();
 				InsertDetailsProduct(ServeurTCP.products.get("categorie"));
 				System.out.println("[Serveur] Le produit a bien été enregistré");
 				connection.close();
 				return "[Serveur] Le produit à bien été ajouté à la base de données";
+			}
+			else {
+				return "Le produit n'a pas pu être ajouté, il n'y a plus de places";
 			}
 		} catch (IOException | SQLException e) {
 			// TODO Auto-generated catch block
@@ -66,7 +73,7 @@ public class RemplirBD {
 			System.err.println("[Serveur] Le client n'a pas respectez le typage des données");
 			System.err.println("[Serveur] Le produit n'a pas pu être ajouté à la base de données");
 		}
-		return "[Serveur] Le produit n'a pas pu être ajouté à la base de données";
+		return "Problème";
 	}
 
 	/**
@@ -158,6 +165,7 @@ public class RemplirBD {
 		int all_stock = 0;
 		result.next();
 		all_stock += result.getInt(1);
+		System.out.println("On a bien le stock");
 		return all_stock;
 	}
 

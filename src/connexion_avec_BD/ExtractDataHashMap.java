@@ -30,7 +30,7 @@ public class ExtractDataHashMap {
 			id_max++;
 		}
 		id_produit = String.valueOf(id_max);
-		ArrayList<String> infos_product_list = new ArrayList<String>(9);
+		ArrayList<String> infos_product_list = new ArrayList<String>(8);
 		infos_product_list.add(0, id_produit);
 		infos_product_list.add(1, ServeurTCP.products.get("nom_produit"));
 		infos_product_list.add(2, ServeurTCP.products.get("cout_produit"));

@@ -1,6 +1,5 @@
 package serveur_reseau;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -81,8 +80,6 @@ public class ProtocoleServeur {
 	public void bufferOverflow(PrintWriter flux_sortie,
 			String chaine_entree, Socket clientSocket) {
 		try {
-			
-			
 			flux_sortie.println("paquet rejeté");
 		} catch (IndexOutOfBoundsException ioe) {
 			System.err.println("[Serveur] Problème d'indexation des caractère du paquet");

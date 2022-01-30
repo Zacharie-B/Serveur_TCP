@@ -10,6 +10,8 @@ import java.util.HashMap;
 import org.apache.log4j.Logger;
 
 import connexion_avec_BD.ConvertStringToHashmap;
+import connexion_avec_BD.ImportantVariable;
+import connexion_avec_BD.RemplirBD;
 import log.LoggerUtility;
 
 import java.io.IOException;
@@ -31,6 +33,9 @@ public class ServeurTCP {
 
 	public static void main(String argv[]) throws IOException {
 
+		RemplirBD put_in_db = new RemplirBD(ImportantVariable.HOST_BD_ALWAYS,
+				ImportantVariable.NAME_BD_ALWAYS, ImportantVariable.USER_BD_ALWAYS,
+				ImportantVariable.PASSWORD_BD_ALWAYS);
 		boolean listening = true;
 		boolean error = false;
 		int portNumber = 5000;
@@ -117,7 +122,7 @@ class ThreadRepet extends Thread {
 		try {
 			// On laisse une minute au client pour nous parler
 			clientSocket.setSoTimeout(60000);
-			
+
 			PrintWriter flux_sortie = new PrintWriter(clientSocket.getOutputStream(), true);
 			BufferedReader flux_entree = new BufferedReader(
 					new InputStreamReader(clientSocket.getInputStream()));
@@ -133,10 +138,7 @@ class ThreadRepet extends Thread {
 				else {
 					System.out.println("[Serveur] Message du client : " + chaine_entree);
 				}
-					
-				/*
-				 * Vérifie si la chaine en entrée possède plus de 18 caractères.
-				 */
+
 				try {
 					int indexEndAsking = chaine_entree.indexOf(" ");
 					Integer code = Integer.valueOf(chaine_entree.substring(0, indexEndAsking));
@@ -151,6 +153,12 @@ class ThreadRepet extends Thread {
 					} else if (code.equals(0xF000)) {
 						chaine_sortie = "Au revoir !";
 						flux_sortie.println(chaine_sortie);
+						System.err.println(" [Serveur] Le client d'adresse IP " + ip_client
+								+ " utilisant le port " + port_number
+								+ " s'est déconnecté correctement.");
+						flux_sortie.close();
+						flux_entree.close();
+						clientSocket.close();
 						return;
 					} else {
 						protocoleServeur.rejectMessage(flux_sortie, chaine_entree, clientSocket);
@@ -163,25 +171,23 @@ class ThreadRepet extends Thread {
 			flux_sortie.close();
 			flux_entree.close();
 			clientSocket.close();
-			System.out.println(" [Serveur] Le client d'adresse IP " + ip_client
-					+ " utilisant le port " + port_number + " s'est déconnecté correctement");
+			System.err.println(" [Serveur] Le client d'adresse IP " + ip_client
+					+ " utilisant le port " + port_number + " s'est brutalement déconnecté");
 		}
 		/**
 		 * Exception qui gère une deconnexion brutale du client.
 		 */
 		catch (SocketException e) {
-			String text_error = "Le client d'adresse IP " + ip_client + " utilisant le port "
-					+ port_number + " s'est brutalement déconnecté";
+			String text_error = "La socket du client " + ip_client + "n'est plus accessible.";
 			System.err.println(text_error);
 			ServeurTCP.logger.info(text_error + "\n");
 		} catch (IOException e) {
-			String socket_time_out = " Il y a eu un problème de flux :"
-					+ "\nSoit il y a un problème de connexion avec la socket"
-					+ "\nSoit le client a mis trop de temps pour répondre ou envoyé des requêtes";
+			String socket_time_out = " Il y a eu un problème de flux :" + "\nLe client " + ip_client
+					+ " a mis trop de temps pour répondre ou envoyé des requêtes";
 			System.err.println("[Serveur]" + socket_time_out);
 			ServeurTCP.logger.info(socket_time_out);
 			System.err.println(
-					"[Serveur] le client " + ip_client + ":" + port_number + " est déconnecté");
+					"[Serveur] Le client " + ip_client + ":" + port_number + " est déconnecté");
 		}
 	}
 }
