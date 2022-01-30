@@ -1,5 +1,6 @@
 package serveur_reseau;
 
+import java.net.BindException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -35,11 +36,11 @@ public class ServeurTCP {
 		int portNumber = 5000;
 
 		try {
-			if (argv[1] != null)
+			if (argv.length >= 2)
 				portNumber = Integer.valueOf(argv[1]);
 			serverSocket = new ServerSocket(portNumber, 0, InetAddress.getByName(argv[0]));
 			logger.info("Bienvenue dans une session de ce serveur TCP :");
-		} catch (IOException e) {
+		} catch (BindException e) {
 			String text_error = "[Serveur] Je ne peux pas ouvrir de socket à " + "l'adresse "
 					+ argv[0] + " avec le port " + portNumber + ", il est déjà utilisé.";
 			System.err.println(text_error);
@@ -112,58 +113,52 @@ class ThreadRepet extends Thread {
 		ServeurTCP.logger.info("Il utilise le port numéro " + port_number);
 	}
 
-	@SuppressWarnings("unlikely-arg-type")
 	public void run() {
 		try {
 			// On laisse une minute au client pour nous parler
 			clientSocket.setSoTimeout(60000);
+			
 			PrintWriter flux_sortie = new PrintWriter(clientSocket.getOutputStream(), true);
 			BufferedReader flux_entree = new BufferedReader(
 					new InputStreamReader(clientSocket.getInputStream()));
-			String chaine_entree, chaine_sortie = null, debut = "";
+			String chaine_entree = " ", chaine_sortie = null;
 
 			/*
 			 * Boucle permmetant de lancer le protocole applicatif côté serveur.
 			 */
 			while ((chaine_entree = flux_entree.readLine()) != null) {
-				System.out.println("[Serveur] Message du client : " + chaine_entree);
+				if (chaine_entree.length() > 50)
+					System.out.println("[Serveur] Message du client : "
+							+ chaine_entree.substring(0, 30) + "...");
+				else {
+					System.out.println("[Serveur] Message du client : " + chaine_entree);
+				}
+					
 				/*
 				 * Vérifie si la chaine en entrée possède plus de 18 caractères.
 				 */
-				int indexEndAsking = chaine_entree.indexOf(" ");
 				try {
-					
-					if (Integer.valueOf(chaine_entree.substring(0, indexEndAsking)).equals(0x1007)) {
-						System.out.println("Dans la bonne chaine");
-						protocoleServeur.DataProduct(flux_sortie, chaine_entree, convert);
+					int indexEndAsking = chaine_entree.indexOf(" ");
+					Integer code = Integer.valueOf(chaine_entree.substring(0, indexEndAsking));
+					if (code.equals(0x1007)) {
+						protocoleServeur.dataProduct(flux_sortie, chaine_entree, convert);
+					} else if (code.equals(0x3000)) {
+						protocoleServeur.serverIsVerySlow(flux_sortie);
+					} else if (code.equals(0x3001)) {
+						protocoleServeur.bufferOverflow(flux_sortie, chaine_entree, clientSocket);
+					} else if (code.equals(0x3002)) {
+						flux_sortie.println("je suis encore là");
+					} else if (code.equals(0xF000)) {
+						chaine_sortie = "Au revoir !";
+						flux_sortie.println(chaine_sortie);
+						return;
+					} else {
+						protocoleServeur.rejectMessage(flux_sortie, chaine_entree, clientSocket);
 					}
-				} catch (NumberFormatException nfe) {
-					protocoleServeur.RejectMessage(flux_sortie, chaine_entree, clientSocket);
-					continue;
-				}
-				if (Integer.valueOf(chaine_entree.substring(0, indexEndAsking)).equals(0x3001)) {
-					System.out.println("Dans la bonne chaine 2");
-					protocoleServeur.BufferOverflow(flux_sortie, flux_entree, chaine_entree);
-				}
-				/*
-				 * Si l'utilisateur a écrit "Salut" alors le serveur ferme la connexion avec le
-				 * client
-				 */
-				else if (Integer.valueOf(chaine_entree.substring(0, indexEndAsking)).equals(0xF000)) {
-					chaine_sortie = "Au revoir !";
-					flux_sortie.println(chaine_sortie);
-					break;
-				} else if (chaine_entree.equals("vous me recevez ?")) {
-					protocoleServeur.ResponseIsSoLong(flux_sortie);
+				} catch (NumberFormatException | StringIndexOutOfBoundsException nfe) {
+					protocoleServeur.rejectMessage(flux_sortie, chaine_entree, clientSocket);
 				}
 
-				/*
-				 * Sinon le serveur répète le message envoyé par le client
-				 */
-				else {
-					protocoleServeur.RejectMessage(flux_sortie, chaine_entree, clientSocket);
-
-				}
 			}
 			flux_sortie.close();
 			flux_entree.close();
@@ -186,7 +181,7 @@ class ThreadRepet extends Thread {
 			System.err.println("[Serveur]" + socket_time_out);
 			ServeurTCP.logger.info(socket_time_out);
 			System.err.println(
-					"[Serveur] le client " + ip_client + ":" + port_number + "est déconnecté");
+					"[Serveur] le client " + ip_client + ":" + port_number + " est déconnecté");
 		}
 	}
 }

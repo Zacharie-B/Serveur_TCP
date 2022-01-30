@@ -32,7 +32,7 @@ public class ProtocoleServeur {
 	 * @param convert
 	 * @throws SQLException
 	 */
-	public void DataProduct(PrintWriter flux_sortie, String chaine_entree,
+	public void dataProduct(PrintWriter flux_sortie, String chaine_entree,
 			ConvertStringToHashmap convert) {
 		convert.ConvertStringToHashMap(chaine_entree);
 		RemplirBD put_in_db = new RemplirBD(ImportantVariable.HOST_BD_ALWAYS,
@@ -50,7 +50,8 @@ public class ProtocoleServeur {
 	 * @param chaine_sortie
 	 * @param chaine_entree
 	 */
-	public void RejectMessage(PrintWriter flux_sortie, String chaine_entree, Socket clientSocket) {
+	public void rejectMessage(PrintWriter flux_sortie, String chaine_entree, Socket clientSocket) {
+		if (chaine_entree.length() > 50)	chaine_entree = chaine_entree.substring(0, 30);
 		String chaine_sortie = "[Serveur] Le message '" + chaine_entree + "' est incorrect,"
 				+ " veuillez nous transmettre un message qui suit le protocole applicatif.";
 		System.out.println(chaine_sortie);
@@ -59,24 +60,32 @@ public class ProtocoleServeur {
 		flux_sortie.println(chaine_sortie);
 	}
 
-	public void ResponseIsSoLong(PrintWriter flux_sortie){
-		
+	public void serverIsVerySlow(PrintWriter flux_sortie) {
+		try {
+			Thread.sleep(5000);
+			flux_sortie.write("réponse");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
+
 	/**
-	 * reçoit le message d'un client en plusieurs datagrammes
+	 * reçoit le message d'un client beaucoup trop long
 	 * 
 	 * @param flux_sortie
 	 * @param flux_entree
 	 * @param chaine_entree
 	 * @throws IOException
 	 */
-	public void BufferOverflow(PrintWriter flux_sortie, BufferedReader flux_entree,
-			String chaine_entree) {
-		try{
-			flux_entree.read(chaine_entree.toCharArray(), 20, 50);
-			System.out.println("[Serveur] Ce paquet trop long est réjeté");
-		} catch(IOException ioe) {
-			System.err.println("[Serveur] Problème de lecture du paquet de 100 000 octets");
+	public void bufferOverflow(PrintWriter flux_sortie,
+			String chaine_entree, Socket clientSocket) {
+		try {
+			
+			
+			flux_sortie.println("paquet rejeté");
+		} catch (IndexOutOfBoundsException ioe) {
+			System.err.println("[Serveur] Problème d'indexation des caractère du paquet");
 		}
 	}
 }
